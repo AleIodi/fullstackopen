@@ -8,15 +8,17 @@ const NewBlog = () => {
   const [author, setAuthor] = useState("");
   const [url, setUrl] = useState("");
   const navigate = useNavigate();
-  const { addBlog } = useBlogActions()
+  const { addBlog } = useBlogActions();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    addBlog({ title, author, url });
-    setTitle("");
-    setAuthor("");
-    setUrl("");
-    navigate("/");
+    const created = await addBlog({ title, author, url });
+    if (created) {
+      setTitle("");
+      setAuthor("");
+      setUrl("");
+      navigate("/");
+    }
   };
 
   return (
