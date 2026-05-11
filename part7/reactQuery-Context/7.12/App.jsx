@@ -201,7 +201,7 @@ const App = () => {
             path="/"
             element={
               <ErrorBoundary>
-                <BlogList blogs={blogs} />
+                <BlogList />
               </ErrorBoundary>
             }
           />
